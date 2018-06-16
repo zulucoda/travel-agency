@@ -1,6 +1,12 @@
+/**
+ * Created by Muzikayise Flynn Buthelezi (zuluCoda) on 2018/06/16.
+ * Copyright mfbproject.co.za - muzi@mfbproject.co.za
+ * Copyright zulucoda - mfbproject
+ */
+
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './app.css';
 
 class App extends Component {
   render() {
