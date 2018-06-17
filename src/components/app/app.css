@@ -7479,6 +7479,33 @@ a.text-dark:hover, a.text-dark:focus {
       .trips-component .trip .trip-progress hr {
         border: 5px dashed #ffffff; }
 
+.total-component {
+  color: #ffffff;
+  width: 100%;
+  height: 144px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #1A293C;
+  background: linear-gradient(to right, #1A293C 0%, #192637 100%);
+  box-shadow: 3px 3px 3px 2px #1A293C;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center; }
+  .total-component .total-departure, .total-component .total-progress, .total-component .total-arrival, .total-component .total-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .total-component .total-amount h3 {
+    color: #22bb83;
+    border: 2px solid #22bb83;
+    border-radius: 5px;
+    width: 110px;
+    text-align: center; }
+
 body {
   margin: 0;
   padding: 0;
