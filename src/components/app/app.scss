@@ -1,6 +1,7 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap-grid";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "../../../node_modules/@fortawesome/fontawesome/styles.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .container {
   //width: 100%;
@@ -161,7 +162,8 @@
 }
 
 body {
+  background-color: #101C2C;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
