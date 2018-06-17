@@ -1,30 +1,105 @@
-.App {
-  text-align: center;
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/@fortawesome/fontawesome/styles.css";
+
+.container {
+  //width: 100%;
+  //min-height: calc(100vh);
+  ////background: url('/assets/images/back-01.png') repeat center;
+  //background: url('../../../public/assets/images/back-01.png') repeat center;
+  //background-size: cover;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.app-body {
+  width: 100%;
+  min-height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.search-component {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  padding-left: 25px;
+  padding-right: 25px;
+
+
+  background-color: #1A293C;
+  //background: linear-gradient(to right, #1A293C 0%,#192637 100%);
+  border-radius: 10px 10px 0px 0px;
+
+  .search-item, .search-btn {
+    padding: 5px;
+    width: 380px;
+    height: 44px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+  }
+
+  .search-btn {
+    flex-shrink: 5;
+  }
+
+  .input-group-text {
+    color: white;
+    background: #ff931e;
+    background: linear-gradient(to right, #ff931e 0%,#f46523 100%);
+    border: 0;
+  }
 }
 
-.App-title {
-  font-size: 1.5em;
-}
+.trips-component {
+  background-color: #454076;
+  border-radius: 0px 0px 10px 10px;
+  height: 540px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
-.App-intro {
-  font-size: large;
-}
+  .trip {
+    color: white;
+    width: 95%;
+    background-color: #2E2E4A;
+    height: 144px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .trip-cost-duration {
+      width: 110px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h5 {
+        color: #22bb83;
+        border: 2px solid #22bb83;
+        border-radius: 5px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
 }
 
 body {
