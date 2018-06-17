@@ -6,14 +6,16 @@
 
 import appReducer, {
   travelDealsReceivedAction,
-  onGetTravelDealsAsyncAction
+  onGetTravelDealsAsyncAction,
+  getCitiesAction
 } from '../app.reducer';
 import travelDealsService from '../../../service/travel-deals-service';
 
 describe('App Reducer - Unit Test', () => {
   function stateBefore() {
     return {
-      travelDeals: {}
+      travelDeals: {},
+      cities: []
     };
   }
 
@@ -32,12 +34,12 @@ describe('App Reducer - Unit Test', () => {
         },
         {
           transport: 'bus',
-          departure: 'London',
-          arrival: 'Amsterdam',
+          departure: 'Amsterdam',
+          arrival: 'London',
           duration: { h: '07', m: '45' },
           cost: 40,
           discount: 25,
-          reference: 'BLA0745'
+          reference: 'BAL0745'
         }
       ]
     };
@@ -55,21 +57,38 @@ describe('App Reducer - Unit Test', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('should return state when travelDealsReceivedAction action is dispatched', function() {
-    const action = travelDealsReceivedAction(payload());
+  describe('travelDealsReceivedAction action', () => {
+    it('should return state when travelDealsReceivedAction action is dispatched', () => {
+      const action = travelDealsReceivedAction(payload());
 
-    const actual = appReducer(stateBefore(), action);
+      const actual = appReducer(stateBefore(), action);
 
-    const expected = {
-      ...stateBefore(),
-      travelDeals: { ...payload() }
-    };
+      const expected = {
+        ...stateBefore(),
+        travelDeals: { ...payload() }
+      };
 
-    expect(actual).toEqual(expected);
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('get cities action', () => {
+    it('should return state with cities set when getCitiesAction is dispatched', () => {
+      const action = getCitiesAction(payload());
+
+      const actual = appReducer(stateBefore(), action);
+
+      const expected = {
+        ...stateBefore(),
+        cities: ['London', 'Amsterdam']
+      };
+
+      expect(actual).toEqual(expected);
+    });
   });
 
   describe('onGetTravelDeals async action', () => {
-    it('should dispatch travelDealsReceivedAction', async function() {
+    it('should dispatch travelDealsReceivedAction and getCitiesAction when onGetTravelDealsAsyncAction is dispatched', async function() {
       travelDealsService.onGetTravelDeals = jest.fn(() =>
         Promise.resolve(payload())
       );
@@ -81,6 +100,7 @@ describe('App Reducer - Unit Test', () => {
       expect(dispatch.mock.calls[0][0]).toEqual(
         travelDealsReceivedAction(payload())
       );
+      expect(dispatch.mock.calls[1][0]).toEqual(getCitiesAction(payload()));
     });
   });
 });

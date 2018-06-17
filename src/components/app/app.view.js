@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import './app.css';
+import SearchContainer from '../search/search.container';
 
 class App extends Component {
   componentDidMount() {
@@ -15,7 +16,9 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        {JSON.stringify(this.props.travelDeals, null, 3)}
+        <div className="app-body">
+          <SearchContainer />
+        </div>
       </div>
     );
   }
