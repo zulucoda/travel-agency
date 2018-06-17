@@ -85,6 +85,7 @@
     align-items: center;
 
     .trip-cost-duration {
+      flex-grow: 1;
       width: 110px;
 
       display: flex;
@@ -95,8 +96,22 @@
         color: #22bb83;
         border: 2px solid #22bb83;
         border-radius: 5px;
-        width: 100%;
+        width: 110px;
         text-align: center;
+      }
+    }
+
+    .trip-start, .trip-phase-complete {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .trip-progress {
+      flex-grow: 3;
+      hr {
+        border: 5px dashed #ffffff;
       }
     }
   }
