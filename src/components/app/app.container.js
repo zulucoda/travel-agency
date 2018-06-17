@@ -5,7 +5,27 @@
  */
 
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import { onGetTravelDealsAsyncAction } from './app.reducer';
 import AppView from './app.view';
 
-export default connect()(AppView);
+export function mapStateToProps({ appReducer }) {
+  return {
+    travelDeals: appReducer.travelDeals
+  };
+}
+
+export function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      onGetTravelDealsAsyncAction
+    },
+    dispatch
+  );
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppView);

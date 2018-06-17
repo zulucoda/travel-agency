@@ -8,10 +8,14 @@ import React, { Component } from 'react';
 import './app.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.onGetTravelDealsAsyncAction();
+  }
+
   render() {
     return (
       <div className="container">
-        <div />
+        {JSON.stringify(this.props.travelDeals, null, 3)}
       </div>
     );
   }
