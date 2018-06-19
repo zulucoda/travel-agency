@@ -1,3 +1,9 @@
+/**
+ * Created by Muzikayise Flynn Buthelezi (zuluCoda) on 2018/06/19.
+ * Copyright mfbproject.co.za - muzi@mfbproject.co.za
+ * Copyright zulucoda - mfbproject
+ */
+
 const CITY_TYPE = { departure: 'departure', arrival: 'arrival' };
 const DEAL_TYPE = { cheapest: 'Cheapest', fastest: 'Fastest' };
 

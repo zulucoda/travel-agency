@@ -1,3 +1,9 @@
+/**
+ * Created by Muzikayise Flynn Buthelezi (zuluCoda) on 2018/06/19.
+ * Copyright mfbproject.co.za - muzi@mfbproject.co.za
+ * Copyright zulucoda - mfbproject
+ */
+
 import CreateAction from '../../redux/action-creator/create-action';
 
 const reducerName = 'search';

@@ -1,3 +1,9 @@
+/**
+ * Created by Muzikayise Flynn Buthelezi (zuluCoda) on 2018/06/19.
+ * Copyright mfbproject.co.za - muzi@mfbproject.co.za
+ * Copyright zulucoda - mfbproject
+ */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SelectFieldList from './select-field-list/select-field-list.view';
