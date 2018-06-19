@@ -118,5 +118,69 @@ describe('Travel Deals - Unit Test', () => {
         expect(actual).toEqual(expected);
       });
     });
+
+    describe('edge case', () => {
+      it('should get travel deals from London (departure) to Athens (Arrival) city', () => {
+        const departure = 'London';
+        const arrival = 'Athens';
+        const dealType = 'Cheapest';
+
+        const actor = new TravelDeals(testData, dealType);
+
+        const actual = actor.getTravelDealsForCities(departure, arrival);
+
+        const expected = {
+          deals: [
+            {
+              transport: 'bus',
+              departure: 'London',
+              arrival: 'Amsterdam',
+              duration: { h: '07', m: '45' },
+              cost: 40,
+              discount: 25,
+              reference: 'BLA0745'
+            },
+            {
+              transport: 'bus',
+              departure: 'Amsterdam',
+              arrival: 'Warsaw',
+              duration: { h: '05', m: '15' },
+              cost: 40,
+              discount: 25,
+              reference: 'BAW0515'
+            },
+            {
+              transport: 'bus',
+              departure: 'Warsaw',
+              arrival: 'Prague',
+              duration: { h: '06', m: '15' },
+              cost: 40,
+              discount: 0,
+              reference: 'BWP0615'
+            },
+            {
+              transport: 'bus',
+              departure: 'Prague',
+              arrival: 'Budapest',
+              duration: { h: '07', m: '00' },
+              cost: 40,
+              discount: 25,
+              reference: 'BPB0700'
+            },
+            {
+              transport: 'bus',
+              departure: 'Budapest',
+              arrival: 'Athens',
+              duration: { h: '07', m: '45' },
+              cost: 40,
+              discount: 50,
+              reference: 'BBA0745'
+            }
+          ]
+        };
+
+        expect(actual).toEqual(expected);
+      });
+    });
   });
 });

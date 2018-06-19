@@ -40,9 +40,10 @@ class TravelDeals {
     const mapJourney = [];
     mapJourney.push(arrivalCityAndIndex);
     for (let i = deals.length - 1; i > -1; i = i - 2) {
+      const previousDeal = mapJourney[mapJourney.length - 1].deals[0];
       if (
-        deals[i].arrival ===
-        mapJourney[mapJourney.length - 1].deals[0].departure
+        deals[i].arrival === previousDeal.departure &&
+        previousDeal.departure !== departureCityAndIndex.city
       ) {
         const city = this._findCityAndIndex(
           CITY_TYPE.arrival,
