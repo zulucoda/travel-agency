@@ -24,14 +24,20 @@ export default class TotalView extends Component {
   }
 
   _calculateTotalTime() {
-    return this.props.travelDealsReducer.currentDeals.reduce(
-      (acc, currentValue) => {
+    const totalTime = this.props.travelDealsReducer.currentDeals
+      .reduce((acc, currentValue) => {
         const accValue = acc.reference
           ? parseInt(acc.reference.substring(4), 0)
           : acc;
         return accValue + parseInt(currentValue.reference.substring(4), 0);
-      }
-    );
+      })
+      .toString();
+
+    if (totalTime.length > 3) {
+      return `${totalTime.substring(0, 2)}h:${totalTime.substring(2)}m`;
+    } else {
+      return `0${totalTime.substring(0, 1)}h:${totalTime.substring(1)}m`;
+    }
   }
 
   render() {

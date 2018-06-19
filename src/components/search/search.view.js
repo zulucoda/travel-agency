@@ -50,7 +50,17 @@ export default class SearchView extends Component {
         <button
           type="button"
           className="btn btn-success"
-          onClick={() => this.props.resetToInitStateAction()}
+          onClick={() => {
+            this.props.resetToInitStateAction();
+            this.props.searchOnChangeAction({
+              name: 'departure',
+              value: 'Choose departure'
+            });
+            this.props.searchOnChangeAction({
+              name: 'arrival',
+              value: 'Choose arrival'
+            });
+          }}
         >
           CLEAR
         </button>

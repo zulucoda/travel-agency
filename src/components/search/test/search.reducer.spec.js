@@ -25,7 +25,9 @@ describe('Search Reducer - Unit Test', () => {
         departure: 'Choose departure',
         arrival: 'Choose arrival',
         dealType: 'Cheapest'
-      }
+      },
+      isSearchDisable: false,
+      errorMessage: ''
     };
   }
 

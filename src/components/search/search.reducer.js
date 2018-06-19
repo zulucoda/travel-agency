@@ -11,10 +11,7 @@ import {
   cacheDealsAction
 } from '../travel-deals/travel-deals.reducer';
 import { onLoadingAction } from '../app/app.reducer';
-import {
-  resetToInitState,
-  resetToInitStateAction
-} from '../../redux/common-action/common.action';
+import { resetToInitState } from '../../redux/common-action/common.action';
 
 const reducerName = 'search';
 
@@ -35,7 +32,9 @@ const initialSate = {
     departure: 'Choose departure',
     arrival: 'Choose arrival',
     dealType: 'Cheapest'
-  }
+  },
+  isSearchDisable: false,
+  errorMessage: ''
 };
 
 export function onSearchAsyncAction() {
