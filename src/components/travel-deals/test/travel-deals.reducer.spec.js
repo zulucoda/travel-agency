@@ -5,18 +5,15 @@
  */
 
 import travelDealsReducer, {
-  receiveDealsAction
+  receiveDealsAction,
+  cacheDealsAction
 } from '../travel-deals.reducer';
 
 describe('Travel Deals Reducer - Unit Test', () => {
   function stateBefore() {
     return {
       currentDeals: [],
-      cacheDeals: {
-        departure: '',
-        arrival: '',
-        deals: []
-      }
+      cacheDeals: []
     };
   }
 
@@ -100,6 +97,35 @@ describe('Travel Deals Reducer - Unit Test', () => {
       const expected = {
         ...stateBefore(),
         currentDeals: [...payload().deals]
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('cacheDealsAction', () => {
+    it('should return state with cache deals set when cacheDealsAction is dispatched', () => {
+      const departure = 'some departure city 1';
+      const arrival = 'some arrival city 1';
+
+      const action = cacheDealsAction({
+        departure,
+        arrival,
+        deals: [...payload().deals]
+      });
+
+      const actual = travelDealsReducer(stateBefore(), action);
+
+      const expected = {
+        ...stateBefore(),
+        cacheDeals: [
+          ...stateBefore().cacheDeals,
+          {
+            departure,
+            arrival,
+            deals: [...payload().deals]
+          }
+        ]
       };
 
       expect(actual).toEqual(expected);

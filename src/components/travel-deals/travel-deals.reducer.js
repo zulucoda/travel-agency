@@ -11,26 +11,20 @@ const reducerName = 'travel-deals';
 const receiveDeals = new CreateAction(reducerName, 'RECEIVE_DEALS_ACTION');
 export const receiveDealsAction = receiveDeals.action;
 
-export function exampleAsyncAction() {
-  return (dispatch, getState) => {
-    const { travelDealsReducer } = getState();
-    dispatch(exampleAction(!travelDealsReducer.exampleVariable));
-  };
-}
+const cacheDeals = new CreateAction(reducerName, 'CACHE_DEALS_ACTION');
+export const cacheDealsAction = cacheDeals.action;
 
 const initialSate = {
   currentDeals: [],
-  cacheDeals: {
-    departure: '',
-    arrival: '',
-    deals: []
-  }
+  cacheDeals: []
 };
 
 export default function travelDealsReducer(state = initialSate, action) {
   switch (action.type) {
     case receiveDeals.actionType:
       return { ...state, currentDeals: [...action.payload.deals] };
+    case cacheDeals.actionType:
+      return { ...state, cacheDeals: [...state.cacheDeals, action.payload] };
     default:
       return state;
   }
