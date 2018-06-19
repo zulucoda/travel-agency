@@ -32,7 +32,7 @@ describe('Travel Deals Service - Unit Test', () => {
   });
 
   describe('getTravelDealsForCities', () => {
-    describe('cheapest deals', () => {
+    describe('success', () => {
       it('should get travel deals for current departure and arrival city', async () => {
         const departure = 'London';
         const arrival = 'Moscow';
