@@ -5,6 +5,7 @@
  */
 
 import travelDealsService from '../travel-deals-service';
+import testData from '../../../public/data/response.json'; //using as test data as well for convienecey
 
 describe('Travel Deals Service - Unit Test', () => {
   function mockServerSuccess() {
@@ -27,6 +28,66 @@ describe('Travel Deals Service - Unit Test', () => {
       const response = await travelDealsService.onGetTravelDeals();
 
       expect(response).toEqual({ payload: 'some payload' });
+    });
+  });
+
+  describe('getTravelDealsForCities', () => {
+    describe('cheapest deals', () => {
+      it('should get travel deals for current departure and arrival city', async () => {
+        const departure = 'London';
+        const arrival = 'Moscow';
+        const dealType = 'Cheapest';
+
+        const actual = await travelDealsService.getTravelDealsForCities(
+          departure,
+          arrival,
+          dealType,
+          testData
+        );
+
+        const expected = {
+          deals: [
+            {
+              transport: 'bus',
+              departure: 'London',
+              arrival: 'Amsterdam',
+              duration: { h: '07', m: '45' },
+              cost: 40,
+              discount: 25,
+              reference: 'BLA0745'
+            },
+            {
+              transport: 'bus',
+              departure: 'Amsterdam',
+              arrival: 'Warsaw',
+              duration: { h: '05', m: '15' },
+              cost: 40,
+              discount: 25,
+              reference: 'BAW0515'
+            },
+            {
+              transport: 'bus',
+              departure: 'Warsaw',
+              arrival: 'Stockholm',
+              duration: { h: '05', m: '15' },
+              cost: 40,
+              discount: 50,
+              reference: 'BWS0515'
+            },
+            {
+              transport: 'bus',
+              departure: 'Stockholm',
+              arrival: 'Moscow',
+              duration: { h: '05', m: '30' },
+              cost: 40,
+              discount: 25,
+              reference: 'BSM0530'
+            }
+          ]
+        };
+
+        expect(actual).toEqual(expected);
+      });
     });
   });
 });

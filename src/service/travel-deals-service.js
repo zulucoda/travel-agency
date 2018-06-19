@@ -6,6 +6,8 @@
 
 const API_URL = '/data/';
 
+import TravelDeals from './travel-deals';
+
 class TravelDealsService {
   _parseJson(response) {
     return response.json();
@@ -15,6 +17,14 @@ class TravelDealsService {
     return fetch(`${API_URL}response.json`, {
       method: 'GET'
     }).then(this._parseJson);
+  }
+
+  getTravelDealsForCities(departure, arrival, dealType, data) {
+    return new Promise((resolve, reject) => {
+      const travelDeals = new TravelDeals(data, dealType);
+      const results = travelDeals.getTravelDealsForCities(departure, arrival);
+      resolve(results);
+    });
   }
 }
 
