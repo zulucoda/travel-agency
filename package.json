@@ -24,7 +24,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
-    "prettier": "node_modules/.bin/prettier --single-quote --write src/**/*/*.js",
+    "prettier": "node_modules/.bin/prettier --single-quote --write src/*.* src/**/* src/**/**/*.js src/**/**/*.scss ",
     "gen-react-code": "generate-react-code"
   },
   "devDependencies": {

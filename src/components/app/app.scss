@@ -1,8 +1,8 @@
-@import "../../../node_modules/bootstrap/scss/bootstrap-grid";
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import '../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-@import "../search/search.styles";
+@import '../search/search.styles';
 
 .container {
   //width: 100%;
@@ -35,12 +35,12 @@
   .trip {
     color: white;
     width: 95%;
-    background-color: #2E2E4A;
+    background-color: #2e2e4a;
     height: 144px;
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
     display: flex;
     flex-direction: row;
@@ -64,7 +64,8 @@
       }
     }
 
-    .trip-start, .trip-phase-complete {
+    .trip-start,
+    .trip-phase-complete {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -84,7 +85,7 @@
   color: #ffffff;
   width: 100%;
   height: 144px;
-  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   padding-left: 25px;
   padding-right: 25px;
 
@@ -94,9 +95,9 @@
   //background: #866ffe;
   //background: linear-gradient(to right, #866ffe 0%,#4641ff 100%);
 
-  background-color: #1A293C;
-  background: linear-gradient(to right, #1A293C 0%,#192637 100%);
-  box-shadow: 3px 3px 3px 2px #1A293C;
+  background-color: #1a293c;
+  background: linear-gradient(to right, #1a293c 0%, #192637 100%);
+  box-shadow: 3px 3px 3px 2px #1a293c;
 
   border-radius: 10px 10px 10px 10px;
   margin-top: 25px;
@@ -106,7 +107,10 @@
   justify-content: space-around;
   align-items: center;
 
-  .total-departure, .total-progress, .total-arrival, .total-amount {
+  .total-departure,
+  .total-progress,
+  .total-arrival,
+  .total-amount {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,7 +128,7 @@
 }
 
 body {
-  background-color: #101C2C;
+  background-color: #101c2c;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;

@@ -7407,9 +7407,10 @@ a.text-dark:hover, a.text-dark:focus {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   padding-left: 25px;
   padding-right: 25px;
-  background-color: #1A293C;
+  background-color: #1a293c;
   border-radius: 10px 10px 0px 0px; }
-  .search-component .search-item, .search-component .search-btn {
+  .search-component .search-item,
+  .search-component .search-btn {
     padding: 5px;
     width: 380px;
     height: 44px;
@@ -7447,7 +7448,7 @@ a.text-dark:hover, a.text-dark:focus {
   .trips-component .trip {
     color: white;
     width: 95%;
-    background-color: #2E2E4A;
+    background-color: #2e2e4a;
     height: 144px;
     border-radius: 10px;
     margin-top: 15px;
@@ -7469,7 +7470,8 @@ a.text-dark:hover, a.text-dark:focus {
         border-radius: 5px;
         width: 110px;
         text-align: center; }
-    .trips-component .trip .trip-start, .trips-component .trip .trip-phase-complete {
+    .trips-component .trip .trip-start,
+    .trips-component .trip .trip-phase-complete {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -7486,16 +7488,19 @@ a.text-dark:hover, a.text-dark:focus {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   padding-left: 25px;
   padding-right: 25px;
-  background-color: #1A293C;
-  background: linear-gradient(to right, #1A293C 0%, #192637 100%);
-  box-shadow: 3px 3px 3px 2px #1A293C;
+  background-color: #1a293c;
+  background: linear-gradient(to right, #1a293c 0%, #192637 100%);
+  box-shadow: 3px 3px 3px 2px #1a293c;
   border-radius: 10px 10px 10px 10px;
   margin-top: 25px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center; }
-  .total-component .total-departure, .total-component .total-progress, .total-component .total-arrival, .total-component .total-amount {
+  .total-component .total-departure,
+  .total-component .total-progress,
+  .total-component .total-arrival,
+  .total-component .total-amount {
     display: flex;
     flex-direction: column;
     align-items: center; }
@@ -7507,7 +7512,7 @@ a.text-dark:hover, a.text-dark:focus {
     text-align: center; }
 
 body {
-  background-color: #101C2C;
+  background-color: #101c2c;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif; }
