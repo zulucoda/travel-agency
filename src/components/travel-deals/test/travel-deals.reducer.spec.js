@@ -5,18 +5,65 @@
  */
 
 import travelDealsReducer, {
-  exampleAction,
-  exampleAsyncAction
+  receiveDealsAction
 } from '../travel-deals.reducer';
 
-describe('travelDealsReducer - Unit Test', () => {
+describe('Travel Deals Reducer - Unit Test', () => {
   function stateBefore() {
     return {
-      exampleVariable: false
+      currentDeals: [],
+      cacheDeals: {
+        departure: '',
+        arrival: '',
+        deals: []
+      }
     };
   }
 
-  it('should return initial state when action is undefined', () => {
+  function payload() {
+    return {
+      deals: [
+        {
+          transport: 'bus',
+          departure: 'London',
+          arrival: 'Amsterdam',
+          duration: { h: '07', m: '45' },
+          cost: 40,
+          discount: 25,
+          reference: 'BLA0745'
+        },
+        {
+          transport: 'bus',
+          departure: 'Amsterdam',
+          arrival: 'Warsaw',
+          duration: { h: '05', m: '15' },
+          cost: 40,
+          discount: 25,
+          reference: 'BAW0515'
+        },
+        {
+          transport: 'bus',
+          departure: 'Warsaw',
+          arrival: 'Stockholm',
+          duration: { h: '05', m: '15' },
+          cost: 40,
+          discount: 50,
+          reference: 'BWS0515'
+        },
+        {
+          transport: 'bus',
+          departure: 'Stockholm',
+          arrival: 'Moscow',
+          duration: { h: '05', m: '30' },
+          cost: 40,
+          discount: 25,
+          reference: 'BSM0530'
+        }
+      ]
+    };
+  }
+
+  it('should return initial state', () => {
     const action = {};
 
     const actual = travelDealsReducer(undefined, action);
@@ -44,15 +91,15 @@ describe('travelDealsReducer - Unit Test', () => {
     expect(actual).toEqual(expected);
   });
 
-  describe('exampleAction', () => {
-    it('should send humans to Mars to recolonise', () => {
-      const action = exampleAction(false);
+  describe('receiveDealsAction', () => {
+    it('should return state with current deals set when receiveDealsAction is dispatched', () => {
+      const action = receiveDealsAction(payload());
 
       const actual = travelDealsReducer(stateBefore(), action);
 
       const expected = {
         ...stateBefore(),
-        exampleVariable: false
+        currentDeals: [...payload().deals]
       };
 
       expect(actual).toEqual(expected);

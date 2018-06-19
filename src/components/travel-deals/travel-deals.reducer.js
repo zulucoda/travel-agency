@@ -8,8 +8,8 @@ import CreateAction from '../../redux/action-creator/create-action';
 
 const reducerName = 'travel-deals';
 
-const example = new CreateAction(reducerName, 'EXAMPLE_ACTION');
-export const exampleAction = example.action;
+const receiveDeals = new CreateAction(reducerName, 'RECEIVE_DEALS_ACTION');
+export const receiveDealsAction = receiveDeals.action;
 
 export function exampleAsyncAction() {
   return (dispatch, getState) => {
@@ -19,13 +19,18 @@ export function exampleAsyncAction() {
 }
 
 const initialSate = {
-  exampleVariable: false
+  currentDeals: [],
+  cacheDeals: {
+    departure: '',
+    arrival: '',
+    deals: []
+  }
 };
 
 export default function travelDealsReducer(state = initialSate, action) {
   switch (action.type) {
-    case example.actionType:
-      return { ...state, exampleVariable: action.payload };
+    case receiveDeals.actionType:
+      return { ...state, currentDeals: [...action.payload.deals] };
     default:
       return state;
   }
