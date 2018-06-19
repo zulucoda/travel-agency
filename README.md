@@ -20,7 +20,7 @@ The project was created using `create-react-app`. This project conforms to the [
 
 Other:
 * I use `sass` to manage `css`, `bootstrap` and have created the layout using `flexbox`.
-* For my development workflow, I also use `Generate React Code` which is my own tool which I co-created with a colleague. We create this tool so that team members will easily conform to our agreed conversion. Additionally, the tool promotes "test first" principles.
+* For my development workflow, I also use `Generate React Code` which is my own tool which I co-created with a colleague. We created this tool so that team members will easily conform to our agreed conversion. Additionally, the tool promotes "test first" principles.
 * `Prettier` - Automatically formats code after every commit.
 * `Enzyme` for `view` (React Component) tests.
 
