@@ -65,7 +65,11 @@ export default class SearchView extends Component {
           </div>
         </div>
         <div className="search-btn search-item">
-          <button type="button" className="btn btn-danger">
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => this.props.onSearchAsyncAction()}
+          >
             SEARCH
           </button>
         </div>
@@ -77,5 +81,6 @@ export default class SearchView extends Component {
 SearchView.propTypes = {
   searchOnChangeAction: PropTypes.func.isRequired,
   searchReducer: PropTypes.object.isRequired,
-  cities: PropTypes.array.isRequired
+  cities: PropTypes.array.isRequired,
+  onSearchAsyncAction: PropTypes.func.isRequired
 };

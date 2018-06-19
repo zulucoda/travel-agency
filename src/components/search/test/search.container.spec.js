@@ -8,7 +8,7 @@ jest.mock('redux');
 
 import { bindActionCreators } from 'redux';
 import { mapStateToProps, mapDispatchToProps } from '../search.container';
-import { searchOnChangeAction } from '../search.reducer';
+import { searchOnChangeAction, onSearchAsyncAction } from '../search.reducer';
 
 describe('Search Container - Unit test', () => {
   function stateBefore() {
@@ -44,7 +44,8 @@ describe('Search Container - Unit test', () => {
 
     expect(bindActionCreators).toHaveBeenCalledWith(
       {
-        searchOnChangeAction
+        searchOnChangeAction,
+        onSearchAsyncAction
       },
       dispatch
     );

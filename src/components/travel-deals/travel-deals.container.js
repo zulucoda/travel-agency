@@ -8,19 +8,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import TravelDealsView from './travel-deals.view';
-import {} from './travel-deals.reducer';
+import { cacheDealsAction, receiveDealsAction } from './travel-deals.reducer';
 
 export function mapStateToProps({ travelDealsReducer }) {
   return {
-    exampleVariable: travelDealsReducer.exampleVariable
+    travelDealsReducer
   };
 }
 
 export function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      // exampleAction,
-      // exampleAsyncAction
+      cacheDealsAction,
+      receiveDealsAction
     },
     dispatch
   );

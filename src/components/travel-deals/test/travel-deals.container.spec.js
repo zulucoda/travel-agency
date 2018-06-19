@@ -8,13 +8,14 @@ jest.mock('redux');
 
 import { bindActionCreators } from 'redux';
 import { mapStateToProps, mapDispatchToProps } from '../travel-deals.container';
-import { exampleAction, exampleAsyncAction } from '../travel-deals.reducer';
+import { cacheDealsAction, receiveDealsAction } from '../travel-deals.reducer';
 
-describe('travelDealsContainer - Unit test', () => {
+describe('Travel Deals Container - Unit test', () => {
   function stateBefore() {
     return {
       travelDealsReducer: {
-        exampleVariable: true
+        currentDeals: [],
+        cacheDeals: []
       }
     };
   }
@@ -23,7 +24,7 @@ describe('travelDealsContainer - Unit test', () => {
     const actual = mapStateToProps(stateBefore());
 
     const expected = {
-      exampleVariable: true
+      ...stateBefore()
     };
 
     expect(actual).toEqual(expected);
@@ -36,8 +37,8 @@ describe('travelDealsContainer - Unit test', () => {
 
     expect(bindActionCreators).toHaveBeenCalledWith(
       {
-        exampleAction,
-        exampleAsyncAction
+        cacheDealsAction,
+        receiveDealsAction
       },
       dispatch
     );
