@@ -7,17 +7,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import TravelDealsView from '../travel-deals.view';
+import TotalView from '../total.view';
 
-describe('Travel Deals View - Unit Test', () => {
+describe('Total View - Unit Test', () => {
   const travelDealsReducer = { currentDeals: [] };
   const searchReducer = { search: {} };
 
   it('should render without crashing', () => {
     shallow(
-      <TravelDealsView
-        travelDealsReducer={travelDealsReducer}
+      <TotalView
         searchReducer={searchReducer}
+        travelDealsReducer={travelDealsReducer}
       />
     );
   });

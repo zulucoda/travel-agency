@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import './app.css';
 import SearchContainer from '../search/search.container';
 import TravelDealsContainer from '../travel-deals/travel-deals.container';
+import TotalContainer from '../total/total.container';
 
 class App extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class App extends Component {
         <div className="app-body">
           <SearchContainer />
           <TravelDealsContainer />
+          <TotalContainer />
         </div>
       </div>
     );

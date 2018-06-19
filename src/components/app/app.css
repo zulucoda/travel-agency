@@ -7473,15 +7473,7 @@ a.text-dark:hover, a.text-dark:focus {
       .travel-deals .travel-deal .travel-deal-progress hr {
         border: 5px dashed #ffffff; }
 
-.app-body {
-  width: 100%;
-  min-height: calc(100vh);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-
-.total-component {
+.totals {
   color: #ffffff;
   width: 100%;
   height: 144px;
@@ -7497,19 +7489,27 @@ a.text-dark:hover, a.text-dark:focus {
   flex-direction: row;
   justify-content: space-around;
   align-items: center; }
-  .total-component .total-departure,
-  .total-component .total-progress,
-  .total-component .total-arrival,
-  .total-component .total-amount {
+  .totals .total-departure,
+  .totals .total-progress,
+  .totals .total-arrival,
+  .totals .total-amount {
     display: flex;
     flex-direction: column;
     align-items: center; }
-  .total-component .total-amount h3 {
+  .totals .total-amount h3 {
     color: #22bb83;
     border: 2px solid #22bb83;
     border-radius: 5px;
     width: 110px;
     text-align: center; }
+
+.app-body {
+  width: 100%;
+  min-height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
 
 body {
   background-color: #101c2c;
