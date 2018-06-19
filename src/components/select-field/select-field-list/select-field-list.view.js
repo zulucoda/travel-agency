@@ -24,10 +24,13 @@ export default class SelectFieldList extends Component {
   }
 
   render() {
-    return <optgroup>{this._renderOptionList()}</optgroup>;
+    return (
+      <optgroup label={this.props.label}>{this._renderOptionList()}</optgroup>
+    );
   }
 }
 
 SelectFieldList.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  label: PropTypes.string.isRequired
 };

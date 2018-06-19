@@ -9,12 +9,15 @@ import { shallow } from 'enzyme';
 
 import AppView from '../app.view';
 
-describe('AppView - Unit Test', () => {
+describe('App View - Unit Test', () => {
   const onGetTravelDealsAsyncActionMock = jest.fn();
 
   it('should render without crashing', () => {
     shallow(
-      <AppView onGetTravelDealsAsyncAction={onGetTravelDealsAsyncActionMock} />
+      <AppView
+        onGetTravelDealsAsyncAction={onGetTravelDealsAsyncActionMock}
+        isLoading={false}
+      />
     );
   });
 });

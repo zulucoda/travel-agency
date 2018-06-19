@@ -31,6 +31,7 @@ export default class SearchView extends Component {
               name="departure"
               onChange={this.props.searchOnChangeAction}
               value={this.props.searchReducer.search.departure}
+              label="Departure Cities"
             />
           </div>
         </div>
@@ -46,6 +47,7 @@ export default class SearchView extends Component {
               name="arrival"
               onChange={this.props.searchOnChangeAction}
               value={this.props.searchReducer.search.arrival}
+              label="Arrival Cities"
             />
           </div>
         </div>
@@ -61,6 +63,7 @@ export default class SearchView extends Component {
               name="dealType"
               onChange={this.props.searchOnChangeAction}
               value={this.props.searchReducer.search.dealType}
+              label="Preferred journey"
             />
           </div>
         </div>

@@ -10,8 +10,9 @@ import SearchContainer from '../search/search.container';
 import TravelDealsContainer from '../travel-deals/travel-deals.container';
 import TotalContainer from '../total/total.container';
 import SpinnerView from '../spinner/spinner.view';
+import PropTypes from 'prop-types';
 
-class App extends Component {
+export default class App extends Component {
   componentDidMount() {
     this.props.onGetTravelDealsAsyncAction();
   }
@@ -30,4 +31,7 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  onGetTravelDealsAsyncAction: PropTypes.func.isRequired
+};
