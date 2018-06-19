@@ -7,7 +7,8 @@
 import appReducer, {
   travelDealsReceivedAction,
   onGetTravelDealsAsyncAction,
-  getCitiesAction
+  getCitiesAction,
+  onLoadingAction
 } from '../app.reducer';
 import TravelDealsService from '../../../service/travel-deals-service';
 
@@ -15,7 +16,8 @@ describe('App Reducer - Unit Test', () => {
   function stateBefore() {
     return {
       travelDeals: {},
-      cities: []
+      cities: [],
+      isLoading: false
     };
   }
 
@@ -88,7 +90,7 @@ describe('App Reducer - Unit Test', () => {
   });
 
   describe('onGetTravelDeals async action', () => {
-    it('should dispatch travelDealsReceivedAction and getCitiesAction when onGetTravelDealsAsyncAction is dispatched', async () => {
+    it('should dispatch onLoadingAction and travelDealsReceivedAction and getCitiesAction when onGetTravelDealsAsyncAction is dispatched', async () => {
       TravelDealsService.onGetTravelDeals = jest.fn(() =>
         Promise.resolve(payload())
       );
@@ -98,9 +100,30 @@ describe('App Reducer - Unit Test', () => {
       await onGetTravelDealsAsyncAction()(dispatch);
 
       expect(dispatch.mock.calls[0][0]).toEqual(
+        onLoadingAction({ isLoading: true })
+      );
+      expect(dispatch.mock.calls[1][0]).toEqual(
         travelDealsReceivedAction(payload())
       );
-      expect(dispatch.mock.calls[1][0]).toEqual(getCitiesAction(payload()));
+      expect(dispatch.mock.calls[2][0]).toEqual(getCitiesAction(payload()));
+      expect(dispatch.mock.calls[3][0]).toEqual(
+        onLoadingAction({ isLoading: false })
+      );
+    });
+  });
+
+  describe('onLoading action', () => {
+    it('should return state with loading set when onLoadingAction is dispatched', () => {
+      const action = onLoadingAction({ isLoading: true });
+
+      const actual = appReducer(stateBefore(), action);
+
+      const expected = {
+        ...stateBefore(),
+        isLoading: true
+      };
+
+      expect(actual).toEqual(expected);
     });
   });
 });

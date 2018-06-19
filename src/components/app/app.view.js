@@ -9,6 +9,7 @@ import './app.css';
 import SearchContainer from '../search/search.container';
 import TravelDealsContainer from '../travel-deals/travel-deals.container';
 import TotalContainer from '../total/total.container';
+import SpinnerView from '../spinner/spinner.view';
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
           <SearchContainer />
           <TravelDealsContainer />
           <TotalContainer />
+          <SpinnerView showSpinner={this.props.isLoading} />
         </div>
       </div>
     );

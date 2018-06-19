@@ -10,6 +10,7 @@ import {
   receiveDealsAction,
   cacheDealsAction
 } from '../travel-deals/travel-deals.reducer';
+import { onLoadingAction } from '../app/app.reducer';
 
 const reducerName = 'search';
 
@@ -26,6 +27,7 @@ const initialSate = {
 
 export function onSearchAsyncAction() {
   return function(dispatch, getState) {
+    dispatch(onLoadingAction({ isLoading: true }));
     const departure = getState().searchReducer.search.departure;
     const arrival = getState().searchReducer.search.arrival;
     const dealType = getState().searchReducer.search.dealType;
@@ -40,6 +42,7 @@ export function onSearchAsyncAction() {
       dispatch(
         cacheDealsAction({ departure, arrival, dealType, data: results })
       );
+      dispatch(onLoadingAction({ isLoading: false }));
     });
   };
 }

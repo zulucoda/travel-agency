@@ -12,7 +12,8 @@ import AppView from './app.view';
 
 export function mapStateToProps({ appReducer }) {
   return {
-    travelDeals: appReducer.travelDeals
+    travelDeals: appReducer.travelDeals,
+    isLoading: appReducer.isLoading
   };
 }
 

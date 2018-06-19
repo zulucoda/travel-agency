@@ -14,7 +14,8 @@ describe('App Container - Unit test', () => {
   function stateBefore() {
     return {
       appReducer: {
-        travelDeals: {}
+        travelDeals: {},
+        isLoading: false
       }
     };
   }
@@ -23,7 +24,8 @@ describe('App Container - Unit test', () => {
     const actual = mapStateToProps(stateBefore());
 
     const expected = {
-      travelDeals: {}
+      travelDeals: {},
+      isLoading: false
     };
 
     expect(actual).toEqual(expected);

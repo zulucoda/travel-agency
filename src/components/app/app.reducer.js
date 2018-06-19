@@ -15,18 +15,24 @@ export const travelDealsReceivedAction = travelDealReceived.action;
 const getCities = new CreateAction(reducerName, 'GET_CITIES_ACTION');
 export const getCitiesAction = getCities.action;
 
+const onLoading = new CreateAction(reducerName, 'IS_LOADING_ACTION');
+export const onLoadingAction = onLoading.action;
+
 export function onGetTravelDealsAsyncAction() {
   return function(dispatch) {
+    dispatch(onLoadingAction({ isLoading: true }));
     return TravelDealsService.onGetTravelDeals().then(results => {
       dispatch(travelDealsReceivedAction(results));
       dispatch(getCitiesAction(results));
+      dispatch(onLoadingAction({ isLoading: false }));
     });
   };
 }
 
 const initialSate = {
   travelDeals: {},
-  cities: []
+  cities: [],
+  isLoading: false
 };
 
 export default function appReducer(state = initialSate, action) {
@@ -38,6 +44,11 @@ export default function appReducer(state = initialSate, action) {
       return {
         ...state,
         cities: [...new Set(cities)]
+      };
+    case onLoading.actionType:
+      return {
+        ...state,
+        isLoading: action.payload.isLoading
       };
     default:
       return state;

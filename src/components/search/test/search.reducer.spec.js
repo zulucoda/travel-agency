@@ -13,6 +13,7 @@ import {
   cacheDealsAction,
   receiveDealsAction
 } from '../../travel-deals/travel-deals.reducer';
+import { onLoadingAction } from '../../app/app.reducer';
 
 describe('Search Reducer - Unit Test', () => {
   function stateBefore() {
@@ -101,7 +102,7 @@ describe('Search Reducer - Unit Test', () => {
   });
 
   describe('onSearch async action', () => {
-    it('should dispatch receiveDealsAction and cacheDealsAction when onSearchAsyncAction is dispatched', async () => {
+    it('should dispatch onLoadingAction, receiveDealsAction and cacheDealsAction when onSearchAsyncAction is dispatched', async () => {
       const departure = 'some departure city';
       const arrival = 'some arrival city';
       const dealType = 'Cheapest';
@@ -135,9 +136,15 @@ describe('Search Reducer - Unit Test', () => {
         dealType,
         payload()
       );
-      expect(dispatch.mock.calls[0][0]).toEqual(receiveDealsAction(payload()));
-      expect(dispatch.mock.calls[1][0]).toEqual(
+      expect(dispatch.mock.calls[0][0]).toEqual(
+        onLoadingAction({ isLoading: true })
+      );
+      expect(dispatch.mock.calls[1][0]).toEqual(receiveDealsAction(payload()));
+      expect(dispatch.mock.calls[2][0]).toEqual(
         cacheDealsAction({ departure, arrival, dealType, data: payload() })
+      );
+      expect(dispatch.mock.calls[3][0]).toEqual(
+        onLoadingAction({ isLoading: false })
       );
     });
   });
