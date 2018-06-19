@@ -4,9 +4,9 @@
  * Copyright zulucoda - mfbproject
  */
 
-const API_URL = '/data/';
-
 import TravelDeals from './travel-deals';
+
+const API_URL = '/data/';
 
 class TravelDealsService {
   _parseJson(response) {
