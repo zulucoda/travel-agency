@@ -7,8 +7,10 @@
 import { combineReducers } from 'redux';
 import appReducer from '../components/app/app.reducer';
 import searchReducer from '../components/search/search.reducer';
+import travelDealsReducer from '../components/travel-deals/travel-deals.reducer';
 
 export default combineReducers({
   appReducer,
-  searchReducer
+  searchReducer,
+  travelDealsReducer
 });

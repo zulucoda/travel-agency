@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import './app.css';
 import SearchContainer from '../search/search.container';
+import TravelDealsContainer from '../travel-deals/travel-deals.container';
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
       <div className="container">
         <div className="app-body">
           <SearchContainer />
+          <TravelDealsContainer />
         </div>
       </div>
     );

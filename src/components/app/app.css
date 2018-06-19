@@ -7427,15 +7427,7 @@ a.text-dark:hover, a.text-dark:focus {
     background: linear-gradient(to right, #ff931e 0%, #f46523 100%);
     border: 0; }
 
-.app-body {
-  width: 100%;
-  min-height: calc(100vh);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-
-.trips-component {
+.travel-deals {
   background-color: #454076;
   border-radius: 0px 0px 10px 10px;
   height: 540px;
@@ -7445,7 +7437,7 @@ a.text-dark:hover, a.text-dark:focus {
   align-items: center;
   padding-top: 15px;
   padding-bottom: 15px; }
-  .trips-component .trip {
+  .travel-deals .travel-deal {
     color: white;
     width: 95%;
     background-color: #2e2e4a;
@@ -7458,28 +7450,36 @@ a.text-dark:hover, a.text-dark:focus {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center; }
-    .trips-component .trip .trip-cost-duration {
+    .travel-deals .travel-deal .travel-deal-cost-duration {
       flex-grow: 1;
       width: 110px;
       display: flex;
       flex-direction: column;
       align-items: center; }
-      .trips-component .trip .trip-cost-duration h5 {
+      .travel-deals .travel-deal .travel-deal-cost-duration h5 {
         color: #22bb83;
         border: 2px solid #22bb83;
         border-radius: 5px;
         width: 110px;
         text-align: center; }
-    .trips-component .trip .trip-start,
-    .trips-component .trip .trip-phase-complete {
+    .travel-deals .travel-deal .travel-deal-start,
+    .travel-deals .travel-deal .travel-deal-phase-complete {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       align-items: center; }
-    .trips-component .trip .trip-progress {
+    .travel-deals .travel-deal .travel-deal-progress {
       flex-grow: 3; }
-      .trips-component .trip .trip-progress hr {
+      .travel-deals .travel-deal .travel-deal-progress hr {
         border: 5px dashed #ffffff; }
+
+.app-body {
+  width: 100%;
+  min-height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
 
 .total-component {
   color: #ffffff;

@@ -1,0 +1,59 @@
+.travel-deals {
+  background-color: #454076;
+  border-radius: 0px 0px 10px 10px;
+  height: 540px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  .travel-deal {
+    color: white;
+    width: 95%;
+    background-color: #2e2e4a;
+    height: 144px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .travel-deal-cost-duration {
+      flex-grow: 1;
+      width: 110px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h5 {
+        color: #22bb83;
+        border: 2px solid #22bb83;
+        border-radius: 5px;
+        width: 110px;
+        text-align: center;
+      }
+    }
+
+    .travel-deal-start,
+    .travel-deal-phase-complete {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .travel-deal-progress {
+      flex-grow: 3;
+      hr {
+        border: 5px dashed #ffffff;
+      }
+    }
+  }
+}
