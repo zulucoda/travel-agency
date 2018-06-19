@@ -6,7 +6,8 @@
 
 import searchReducer, {
   searchOnChangeAction,
-  onSearchAsyncAction
+  onSearchAsyncAction,
+  onSearchErrorAction
 } from '../search.reducer';
 import TravelDealsService from '../../../service/travel-deals-service';
 import {
@@ -95,6 +96,21 @@ describe('Search Reducer - Unit Test', () => {
           ...stateBefore().search,
           departure: 'some value'
         }
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('onSearchError', () => {
+    it('should return state with errorMessage set when onSearchError action is dispatched', () => {
+      const action = onSearchErrorAction({ message: 'some error message' });
+
+      const actual = searchReducer(stateBefore(), action);
+
+      const expected = {
+        ...stateBefore(),
+        errorMessage: 'some error message'
       };
 
       expect(actual).toEqual(expected);

@@ -10,15 +10,26 @@ import { shallow } from 'enzyme';
 import SearchView from '../search.view';
 
 describe('SearchView - Unit Test', () => {
-  const exampleAsyncActionMock = jest.fn();
-  const exampleActionMock = jest.fn();
+  const onSearchErrorActionMock = jest.fn();
+  const onSearchAsyncActionMock = jest.fn();
+  const searchOnChangeActionMock = jest.fn();
+  const searchReducer = {
+    search: {
+      departure: 'Choose departure',
+      arrival: 'Choose arrival',
+      dealType: 'Cheapest'
+    }
+  };
 
   it('should render without crashing', () => {
-    // shallow(
-    //     <SearchView
-    //         exampleAsyncAction={exampleAsyncActionMock}
-    //         exampleAction={exampleActionMock}
-    //     />
-    // );
+    shallow(
+      <SearchView
+        onSearchAsyncAction={onSearchAsyncActionMock}
+        searchOnChangeAction={searchOnChangeActionMock}
+        onSearchErrorAction={onSearchErrorActionMock}
+        searchReducer={searchReducer}
+        cities={[]}
+      />
+    );
   });
 });

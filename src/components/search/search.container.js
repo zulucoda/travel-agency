@@ -8,11 +8,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import SearchView from './search.view';
-import { searchOnChangeAction, onSearchAsyncAction } from './search.reducer';
+import {
+  searchOnChangeAction,
+  onSearchAsyncAction,
+  onSearchErrorAction
+} from './search.reducer';
+import { CHOOSE_CITY } from '../../constants/constants';
 
 export function mapStateToProps({ appReducer, searchReducer }) {
   return {
-    cities: ['Choose city', ...appReducer.cities],
+    cities: [CHOOSE_CITY.chooseCity, ...appReducer.cities],
     searchReducer
   };
 }
@@ -21,7 +26,8 @@ export function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       searchOnChangeAction,
-      onSearchAsyncAction
+      onSearchAsyncAction,
+      onSearchErrorAction
     },
     dispatch
   );

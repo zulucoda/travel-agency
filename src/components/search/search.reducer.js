@@ -17,6 +17,9 @@ const reducerName = 'search';
 const searchOnChange = new CreateAction(reducerName, 'SEARCH_ON_CHANGE_ACTION');
 export const searchOnChangeAction = searchOnChange.action;
 
+const onSearchError = new CreateAction(reducerName, 'ON_SEARCH_ERROR_ACTION');
+export const onSearchErrorAction = onSearchError.action;
+
 const initialSate = {
   search: {
     departure: 'Choose departure',
@@ -51,6 +54,11 @@ export default function searchReducer(state = initialSate, action) {
     case searchOnChange.actionType:
       state.search[action.payload.name] = action.payload.value;
       return { ...state };
+    case onSearchError.actionType:
+      return {
+        ...state,
+        errorMessage: action.payload.message
+      };
     default:
       return state;
   }
