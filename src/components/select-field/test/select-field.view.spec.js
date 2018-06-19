@@ -1,0 +1,27 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+
+import SelectFieldView from '../select-field.view';
+
+describe('Select Field View - Unit Test', () => {
+  const selectOnChangeActionMock = jest.fn();
+  const resetActionMock = jest.fn();
+  const onChangeMock = jest.fn();
+  const selectFieldReducerMock = {
+    selectFields: {},
+    selectFieldErrors: {}
+  };
+
+  it('should render without crashing', () => {
+    shallow(
+      <SelectFieldView
+        name="select1"
+        data={[]}
+        onChange={onChangeMock}
+        selectFieldReducer={selectFieldReducerMock}
+        selectOnChangeAction={selectOnChangeActionMock}
+        resetAction={resetActionMock}
+      />
+    );
+  });
+});
