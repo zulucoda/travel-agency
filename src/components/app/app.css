@@ -7430,7 +7430,6 @@ a.text-dark:hover, a.text-dark:focus {
 .travel-deals {
   background-color: #454076;
   border-radius: 0px 0px 10px 10px;
-  min-height: 540px;
   width: 100%;
   display: flex;
   flex-direction: column;

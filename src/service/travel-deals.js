@@ -21,6 +21,7 @@ class TravelDeals {
         }
         return true;
       }
+      return false;
     });
 
     return {
@@ -81,8 +82,8 @@ class TravelDeals {
     return journey.deals.reduce((dealAcc, currentDeal) => {
       const acc = dealAcc.reference ? dealAcc.reference : dealAcc;
       return Math.min(
-        Number.isInteger(acc) ? acc : parseInt(acc.substring(4)),
-        parseInt(currentDeal.reference.substring(4))
+        Number.isInteger(acc) ? acc : parseInt(acc.substring(4), 0),
+        parseInt(currentDeal.reference.substring(4), 0)
       );
     });
   }
@@ -90,7 +91,7 @@ class TravelDeals {
   _getBestDealForCustomer(journey, fastestDeal) {
     // if there's more than fast deal, get the cheapest for the customer
     const fastestJourney = journey.deals.filter(
-      deal => parseInt(deal.reference.substring(4)) === fastestDeal
+      deal => parseInt(deal.reference.substring(4), 0) === fastestDeal
     );
     if (fastestJourney.length > 1) {
       const bestDealForCustomer = this._calculateCheapestDeal(journey);

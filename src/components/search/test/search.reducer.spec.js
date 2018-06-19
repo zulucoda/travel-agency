@@ -7,7 +7,8 @@
 import searchReducer, {
   searchOnChangeAction,
   onSearchAsyncAction,
-  onSearchErrorAction
+  onSearchErrorAction,
+  isSearchDisableAction
 } from '../search.reducer';
 import TravelDealsService from '../../../service/travel-deals-service';
 import {
@@ -15,6 +16,7 @@ import {
   receiveDealsAction
 } from '../../travel-deals/travel-deals.reducer';
 import { onLoadingAction } from '../../app/app.reducer';
+import { resetToInitStateAction } from '../../../redux/common-action/common.action';
 
 describe('Search Reducer - Unit Test', () => {
   function stateBefore() {
@@ -117,8 +119,45 @@ describe('Search Reducer - Unit Test', () => {
     });
   });
 
+  describe('isSearchDisableAction', () => {
+    it('should return state with isSearchDisable set when isSearchDisableAction is dispatched', () => {
+      const action = isSearchDisableAction({ isSearchDisable: true });
+
+      const actual = searchReducer(stateBefore(), action);
+
+      const expected = {
+        ...stateBefore(),
+        isSearchDisable: true
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('resetToInitStateAction', () => {
+    it('should return state to initial state when resetToInitStateAction is dispatched', () => {
+      const action = resetToInitStateAction();
+
+      const currentState = {
+        search: {
+          departure: 'some city to departure',
+          arrival: 'some city to arrival',
+          dealType: 'Cheapest'
+        }
+      };
+
+      const actual = searchReducer(currentState, action);
+
+      const expected = {
+        ...stateBefore()
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
   describe('onSearch async action', () => {
-    it('should dispatch onLoadingAction, receiveDealsAction and cacheDealsAction when onSearchAsyncAction is dispatched', async () => {
+    it('should dispatch onLoadingAction, receiveDealsAction, cacheDealsAction, isSearchDisableAction and onLoadingAction when onSearchAsyncAction is dispatched', async () => {
       const departure = 'some departure city';
       const arrival = 'some arrival city';
       const dealType = 'Cheapest';
@@ -160,6 +199,9 @@ describe('Search Reducer - Unit Test', () => {
         cacheDealsAction({ departure, arrival, dealType, data: payload() })
       );
       expect(dispatch.mock.calls[3][0]).toEqual(
+        isSearchDisableAction({ isSearchDisable: true })
+      );
+      expect(dispatch.mock.calls[4][0]).toEqual(
         onLoadingAction({ isLoading: false })
       );
     });

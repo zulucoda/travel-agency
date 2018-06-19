@@ -11,6 +11,10 @@ import {
   cacheDealsAction
 } from '../travel-deals/travel-deals.reducer';
 import { onLoadingAction } from '../app/app.reducer';
+import {
+  resetToInitState,
+  resetToInitStateAction
+} from '../../redux/common-action/common.action';
 
 const reducerName = 'search';
 
@@ -19,6 +23,12 @@ export const searchOnChangeAction = searchOnChange.action;
 
 const onSearchError = new CreateAction(reducerName, 'ON_SEARCH_ERROR_ACTION');
 export const onSearchErrorAction = onSearchError.action;
+
+const isSearchDisable = new CreateAction(
+  reducerName,
+  'IS_SEARCH_DISABLE_ACTION'
+);
+export const isSearchDisableAction = isSearchDisable.action;
 
 const initialSate = {
   search: {
@@ -45,10 +55,12 @@ export function onSearchAsyncAction() {
       dispatch(
         cacheDealsAction({ departure, arrival, dealType, data: results })
       );
+      dispatch(isSearchDisableAction({ isSearchDisable: true }));
       dispatch(onLoadingAction({ isLoading: false }));
     });
   };
 }
+
 export default function searchReducer(state = initialSate, action) {
   switch (action.type) {
     case searchOnChange.actionType:
@@ -58,6 +70,15 @@ export default function searchReducer(state = initialSate, action) {
       return {
         ...state,
         errorMessage: action.payload.message
+      };
+    case isSearchDisable.actionType:
+      return {
+        ...state,
+        isSearchDisable: action.payload.isSearchDisable
+      };
+    case resetToInitState.actionType:
+      return {
+        ...initialSate
       };
     default:
       return state;

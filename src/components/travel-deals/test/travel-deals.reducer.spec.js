@@ -8,6 +8,7 @@ import travelDealsReducer, {
   receiveDealsAction,
   cacheDealsAction
 } from '../travel-deals.reducer';
+import { resetToInitStateAction } from '../../../redux/common-action/common.action';
 
 describe('Travel Deals Reducer - Unit Test', () => {
   function stateBefore() {
@@ -129,6 +130,24 @@ describe('Travel Deals Reducer - Unit Test', () => {
             deals: [...payload().deals]
           }
         ]
+      };
+
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('resetToInitStateAction', () => {
+    it('should return state to initial state when resetToInitStateAction is dispatched', () => {
+      const action = resetToInitStateAction();
+
+      const currentState = {
+        currentDeals: [...payload().deals]
+      };
+
+      const actual = travelDealsReducer(currentState, action);
+
+      const expected = {
+        ...stateBefore()
       };
 
       expect(actual).toEqual(expected);

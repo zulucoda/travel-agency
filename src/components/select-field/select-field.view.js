@@ -31,6 +31,7 @@ export default class SelectFieldView extends Component {
         id={this.props.name}
         onChange={this._onChange}
         value={this.props.value}
+        disabled={this.props.disable}
       >
         <SelectFieldList data={this.props.data} label={this.props.label} />
       </select>
@@ -44,5 +45,6 @@ SelectFieldView.propTypes = {
   data: PropTypes.array.isRequired,
   value: PropTypes.string,
   validate: PropTypes.func,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  disable: PropTypes.bool.isRequired
 };

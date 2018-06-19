@@ -27,9 +27,9 @@ export default class TotalView extends Component {
     return this.props.travelDealsReducer.currentDeals.reduce(
       (acc, currentValue) => {
         const accValue = acc.reference
-          ? parseInt(acc.reference.substring(4))
+          ? parseInt(acc.reference.substring(4), 0)
           : acc;
-        return accValue + parseInt(currentValue.reference.substring(4));
+        return accValue + parseInt(currentValue.reference.substring(4), 0);
       }
     );
   }
@@ -40,30 +40,39 @@ export default class TotalView extends Component {
     } else {
       return (
         <div className="totals">
-          <div class="total">
+          <div className="total">
             <h1>Total</h1>
           </div>
-          <div class="total-departure">
+          <div className="total-departure">
             <h1>
-              <i class="fas fa-flag" />
+              <i className="fas fa-flag" />
             </h1>
             <h3>{this.props.searchReducer.search.departure}</h3>
           </div>
-          <div class="total-progress">
+          <div className="total-progress">
             <h1>
-              <i class="fas fa-arrow-circle-right" />
+              <i className="fas fa-arrow-circle-right" />
             </h1>
           </div>
-          <div class="total-arrival">
+          <div className="total-arrival">
             <h1>
-              <i class="fas fa-flag-checkered" />
+              <i className="fas fa-flag-checkered" />
             </h1>
             <h3>{this.props.searchReducer.search.arrival}</h3>
           </div>
-          <div class="total-amount">
-            <h4>{this._calculateTotalTime()}</h4>
+          <div className="total-amount">
+            <h4>
+              {this.props.travelDealsReducer.currentDeals.length === 1
+                ? `${this.props.travelDealsReducer.currentDeals[0].duration.h}${
+                    this.props.travelDealsReducer.currentDeals[0].duration.m
+                  }`
+                : this._calculateTotalTime()}
+            </h4>
             <h3>
-              {this._calculateTotalCost()} <i class="fas fa-euro-sign" />
+              {this.props.travelDealsReducer.currentDeals.length === 1
+                ? this.props.travelDealsReducer.currentDeals[0].cost
+                : this._calculateTotalCost()}{' '}
+              <i className="fas fa-euro-sign" />
             </h3>
           </div>
         </div>

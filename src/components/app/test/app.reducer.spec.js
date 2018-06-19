@@ -8,7 +8,8 @@ import appReducer, {
   travelDealsReceivedAction,
   onGetTravelDealsAsyncAction,
   getCitiesAction,
-  onLoadingAction
+  onLoadingAction,
+  resetToInitStateAction
 } from '../app.reducer';
 import TravelDealsService from '../../../service/travel-deals-service';
 

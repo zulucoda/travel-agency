@@ -10,15 +10,45 @@ import { shallow } from 'enzyme';
 import TotalView from '../total.view';
 
 describe('Total View - Unit Test', () => {
-  const travelDealsReducer = { currentDeals: [] };
-  const searchReducer = { search: {} };
-
   it('should render without crashing', () => {
+    const travelDealsReducer = { currentDeals: [] };
+    const searchReducer = { search: {} };
     shallow(
       <TotalView
         searchReducer={searchReducer}
         travelDealsReducer={travelDealsReducer}
       />
     );
+  });
+
+  describe('_calculateTotalTime', () => {
+    it('should render total view with one deal', () => {
+      const travelDealsReducer = {
+        currentDeals: [
+          {
+            transport: 'bus',
+            departure: 'London',
+            arrival: 'Amsterdam',
+            duration: { h: '07', m: '45' },
+            cost: 40,
+            discount: 25,
+            reference: 'BLA0745'
+          }
+        ]
+      };
+      const searchReducer = {
+        search: {
+          departure: 'some departure city',
+          arrival: 'some arrival city',
+          dealType: 'Cheapest'
+        }
+      };
+      shallow(
+        <TotalView
+          searchReducer={searchReducer}
+          travelDealsReducer={travelDealsReducer}
+        />
+      );
+    });
   });
 });

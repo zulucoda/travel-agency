@@ -13,6 +13,7 @@ import {
   onSearchAsyncAction,
   onSearchErrorAction
 } from './search.reducer';
+import { resetToInitStateAction } from '../../redux/common-action/common.action';
 import { CHOOSE_CITY } from '../../constants/constants';
 
 export function mapStateToProps({ appReducer, searchReducer }) {
@@ -27,7 +28,8 @@ export function mapDispatchToProps(dispatch) {
     {
       searchOnChangeAction,
       onSearchAsyncAction,
-      onSearchErrorAction
+      onSearchErrorAction,
+      resetToInitStateAction
     },
     dispatch
   );

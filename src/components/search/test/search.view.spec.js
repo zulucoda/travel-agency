@@ -13,12 +13,14 @@ describe('SearchView - Unit Test', () => {
   const onSearchErrorActionMock = jest.fn();
   const onSearchAsyncActionMock = jest.fn();
   const searchOnChangeActionMock = jest.fn();
+  const resetToInitStateActionMock = jest.fn();
   const searchReducer = {
     search: {
       departure: 'Choose departure',
       arrival: 'Choose arrival',
       dealType: 'Cheapest'
-    }
+    },
+    isSearchDisable: false
   };
 
   it('should render without crashing', () => {
@@ -29,6 +31,7 @@ describe('SearchView - Unit Test', () => {
         onSearchErrorAction={onSearchErrorActionMock}
         searchReducer={searchReducer}
         cities={[]}
+        resetToInitStateAction={resetToInitStateActionMock}
       />
     );
   });

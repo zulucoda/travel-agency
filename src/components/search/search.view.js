@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SelectFieldView from '../select-field/select-field.view';
 import { DEAL_TYPE } from '../../constants/constants';
-import { CHOOSE_CITY } from '../../constants/constants';
 
 export default class SearchView extends Component {
   constructor(props) {
@@ -45,13 +44,37 @@ export default class SearchView extends Component {
     return this.props.onSearchAsyncAction();
   }
 
+  _renderSearchOrClear() {
+    if (this.props.searchReducer.isSearchDisable) {
+      return (
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={() => this.props.resetToInitStateAction()}
+        >
+          CLEAR
+        </button>
+      );
+    } else {
+      return (
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={this._onSearchClick}
+        >
+          SEARCH
+        </button>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="search-component">
         <div className="search-start search-item">
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <label className="input-group-text" for="startSelect">
+              <label className="input-group-text" htmlFor="departure">
                 DEP
               </label>
             </div>
@@ -61,13 +84,14 @@ export default class SearchView extends Component {
               onChange={this.props.searchOnChangeAction}
               value={this.props.searchReducer.search.departure}
               label="Departure Cities"
+              disable={this.props.searchReducer.isSearchDisable}
             />
           </div>
         </div>
         <div className="search-end search-item">
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <label className="input-group-text" for="endSelect">
+              <label className="input-group-text" htmlFor="arrival">
                 ARR
               </label>
             </div>
@@ -77,13 +101,14 @@ export default class SearchView extends Component {
               onChange={this.props.searchOnChangeAction}
               value={this.props.searchReducer.search.arrival}
               label="Arrival Cities"
+              disable={this.props.searchReducer.isSearchDisable}
             />
           </div>
         </div>
         <div className="search-options search-item">
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <label className="input-group-text" for="optionsSelect">
+              <label className="input-group-text" htmlFor="dealType">
                 OPTIONS
               </label>
             </div>
@@ -93,17 +118,12 @@ export default class SearchView extends Component {
               onChange={this.props.searchOnChangeAction}
               value={this.props.searchReducer.search.dealType}
               label="Preferred journey"
+              disable={this.props.searchReducer.isSearchDisable}
             />
           </div>
         </div>
         <div className="search-btn search-item">
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={this._onSearchClick}
-          >
-            SEARCH
-          </button>
+          {this._renderSearchOrClear()}
         </div>
         <div className="search-error-message text-warning">
           {this.props.searchReducer.errorMessage}
@@ -118,5 +138,6 @@ SearchView.propTypes = {
   searchReducer: PropTypes.object.isRequired,
   cities: PropTypes.array.isRequired,
   onSearchAsyncAction: PropTypes.func.isRequired,
-  onSearchErrorAction: PropTypes.func.isRequired
+  onSearchErrorAction: PropTypes.func.isRequired,
+  resetToInitStateAction: PropTypes.func.isRequired
 };

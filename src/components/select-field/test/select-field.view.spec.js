@@ -28,6 +28,7 @@ describe('Select Field View - Unit Test', () => {
         selectOnChangeAction={selectOnChangeActionMock}
         resetAction={resetActionMock}
         label="some label"
+        disable={false}
       />
     );
   });

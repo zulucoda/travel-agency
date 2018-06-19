@@ -5,6 +5,7 @@
  */
 
 import CreateAction from '../../redux/action-creator/create-action';
+import { resetToInitState } from '../../redux/common-action/common.action';
 
 const reducerName = 'travel-deals';
 
@@ -25,6 +26,10 @@ export default function travelDealsReducer(state = initialSate, action) {
       return { ...state, currentDeals: [...action.payload.deals] };
     case cacheDeals.actionType:
       return { ...state, cacheDeals: [...state.cacheDeals, action.payload] };
+    case resetToInitState.actionType:
+      return {
+        ...initialSate
+      };
     default:
       return state;
   }

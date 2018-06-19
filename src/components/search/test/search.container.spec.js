@@ -13,6 +13,7 @@ import {
   onSearchAsyncAction,
   onSearchErrorAction
 } from '../search.reducer';
+import { resetToInitStateAction } from '../../../redux/common-action/common.action';
 
 describe('Search Container - Unit test', () => {
   function stateBefore() {
@@ -51,7 +52,8 @@ describe('Search Container - Unit test', () => {
       {
         searchOnChangeAction,
         onSearchAsyncAction,
-        onSearchErrorAction
+        onSearchErrorAction,
+        resetToInitStateAction
       },
       dispatch
     );
