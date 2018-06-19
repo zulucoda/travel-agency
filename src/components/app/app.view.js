@@ -11,6 +11,7 @@ import TravelDealsContainer from '../travel-deals/travel-deals.container';
 import TotalContainer from '../total/total.container';
 import SpinnerView from '../spinner/spinner.view';
 import PropTypes from 'prop-types';
+import MfbView from '../mfb/mfb.view';
 
 export default class App extends Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ export default class App extends Component {
           <SearchContainer />
           <TravelDealsContainer />
           <TotalContainer />
+          <MfbView />
           <SpinnerView showSpinner={this.props.isLoading} />
         </div>
       </div>

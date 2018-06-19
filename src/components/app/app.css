@@ -7608,6 +7608,18 @@ a.text-dark:hover, a.text-dark:focus {
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px;
+  font-size: 0.9em;
+  color: #fff; }
+  .footer .mfb-project-01 img {
+    width: 24px !important;
+    height: 24px !important; }
+
 .app-body {
   width: 100%;
   min-height: calc(100vh);
