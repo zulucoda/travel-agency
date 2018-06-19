@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SelectFieldView from '../select-field/select-field.view';
+import { DEAL_TYPE } from '../../constants/constants';
 
 export default class SearchView extends Component {
   constructor(props) {
@@ -55,10 +56,12 @@ export default class SearchView extends Component {
                 OPTIONS
               </label>
             </div>
-            <select className="custom-select" id="optionsSelect">
-              <option value="Cheapest">Cheapest</option>
-              <option value="Fastest">Fastest</option>
-            </select>
+            <SelectFieldView
+              data={[DEAL_TYPE.cheapest, DEAL_TYPE.fastest]}
+              name="dealType"
+              onChange={this.props.searchOnChangeAction}
+              value={this.props.searchReducer.search.dealType}
+            />
           </div>
         </div>
         <div className="search-btn search-item">

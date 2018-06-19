@@ -5,6 +5,11 @@
  */
 
 import CreateAction from '../../redux/action-creator/create-action';
+import TravelDealService from '../../service/travel-deals-service';
+import {
+  receiveDealsAction,
+  cacheDealsAction
+} from '../travel-deals/travel-deals.reducer';
 
 const reducerName = 'search';
 
@@ -14,10 +19,30 @@ export const searchOnChangeAction = searchOnChange.action;
 const initialSate = {
   search: {
     departure: 'Choose departure',
-    arrival: 'Choose arrival'
+    arrival: 'Choose arrival',
+    dealType: 'Cheapest'
   }
 };
 
+export function onSearchAsyncAction() {
+  return function(dispatch, getState) {
+    const departure = getState().searchReducer.search.departure;
+    const arrival = getState().searchReducer.search.arrival;
+    const dealType = getState().searchReducer.search.dealType;
+    const data = getState().appReducer.travelDeals;
+    return TravelDealService.getTravelDealsForCities(
+      departure,
+      arrival,
+      dealType,
+      data
+    ).then(results => {
+      dispatch(receiveDealsAction(results));
+      dispatch(
+        cacheDealsAction({ departure, arrival, dealType, data: results })
+      );
+    });
+  };
+}
 export default function searchReducer(state = initialSate, action) {
   switch (action.type) {
     case searchOnChange.actionType:

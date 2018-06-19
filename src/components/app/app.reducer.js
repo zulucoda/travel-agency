@@ -5,7 +5,7 @@
  */
 
 import CreateAction from '../../redux/action-creator/create-action';
-import travelDealsService from '../../service/travel-deals-service';
+import TravelDealsService from '../../service/travel-deals-service';
 
 const reducerName = 'app';
 
@@ -17,7 +17,7 @@ export const getCitiesAction = getCities.action;
 
 export function onGetTravelDealsAsyncAction() {
   return function(dispatch) {
-    return travelDealsService.onGetTravelDeals().then(results => {
+    return TravelDealsService.onGetTravelDeals().then(results => {
       dispatch(travelDealsReceivedAction(results));
       dispatch(getCitiesAction(results));
     });

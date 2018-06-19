@@ -4,8 +4,7 @@
  * Copyright zulucoda - mfbproject
  */
 
-const CITY_TYPE = { departure: 'departure', arrival: 'arrival' };
-const DEAL_TYPE = { cheapest: 'Cheapest', fastest: 'Fastest' };
+import { DEAL_TYPE, CITY_TYPE } from '../constants/constants';
 
 class TravelDeals {
   constructor(data, dealType) {

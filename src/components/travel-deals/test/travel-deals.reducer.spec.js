@@ -107,10 +107,12 @@ describe('Travel Deals Reducer - Unit Test', () => {
     it('should return state with cache deals set when cacheDealsAction is dispatched', () => {
       const departure = 'some departure city 1';
       const arrival = 'some arrival city 1';
+      const dealType = 'Cheapest';
 
       const action = cacheDealsAction({
         departure,
         arrival,
+        dealType,
         deals: [...payload().deals]
       });
 
@@ -123,6 +125,7 @@ describe('Travel Deals Reducer - Unit Test', () => {
           {
             departure,
             arrival,
+            dealType,
             deals: [...payload().deals]
           }
         ]

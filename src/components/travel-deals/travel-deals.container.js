@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import TravelDealsView from './travel-deals.view';
-import { exampleAction, exampleAsyncAction } from './travel-deals.reducer';
+import {} from './travel-deals.reducer';
 
 export function mapStateToProps({ travelDealsReducer }) {
   return {
@@ -19,8 +19,8 @@ export function mapStateToProps({ travelDealsReducer }) {
 export function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      exampleAction,
-      exampleAsyncAction
+      // exampleAction,
+      // exampleAsyncAction
     },
     dispatch
   );

@@ -9,7 +9,7 @@ import appReducer, {
   onGetTravelDealsAsyncAction,
   getCitiesAction
 } from '../app.reducer';
-import travelDealsService from '../../../service/travel-deals-service';
+import TravelDealsService from '../../../service/travel-deals-service';
 
 describe('App Reducer - Unit Test', () => {
   function stateBefore() {
@@ -88,8 +88,8 @@ describe('App Reducer - Unit Test', () => {
   });
 
   describe('onGetTravelDeals async action', () => {
-    it('should dispatch travelDealsReceivedAction and getCitiesAction when onGetTravelDealsAsyncAction is dispatched', async function() {
-      travelDealsService.onGetTravelDeals = jest.fn(() =>
+    it('should dispatch travelDealsReceivedAction and getCitiesAction when onGetTravelDealsAsyncAction is dispatched', async () => {
+      TravelDealsService.onGetTravelDeals = jest.fn(() =>
         Promise.resolve(payload())
       );
 

@@ -4,15 +4,50 @@
  * Copyright zulucoda - mfbproject
  */
 
-import searchReducer, { searchOnChangeAction } from '../search.reducer';
+import searchReducer, {
+  searchOnChangeAction,
+  onSearchAsyncAction
+} from '../search.reducer';
+import TravelDealsService from '../../../service/travel-deals-service';
+import {
+  cacheDealsAction,
+  receiveDealsAction
+} from '../../travel-deals/travel-deals.reducer';
 
 describe('Search Reducer - Unit Test', () => {
   function stateBefore() {
     return {
       search: {
         departure: 'Choose departure',
-        arrival: 'Choose arrival'
+        arrival: 'Choose arrival',
+        dealType: 'Cheapest'
       }
+    };
+  }
+
+  function payload() {
+    return {
+      currency: 'EUR',
+      deals: [
+        {
+          transport: 'train',
+          departure: 'London',
+          arrival: 'Amsterdam',
+          duration: { h: '05', m: '00' },
+          cost: 160,
+          discount: 0,
+          reference: 'TLA0500'
+        },
+        {
+          transport: 'bus',
+          departure: 'Amsterdam',
+          arrival: 'London',
+          duration: { h: '07', m: '45' },
+          cost: 40,
+          discount: 25,
+          reference: 'BAL0745'
+        }
+      ]
     };
   }
 
@@ -65,5 +100,45 @@ describe('Search Reducer - Unit Test', () => {
     });
   });
 
-  // describe('onSearchAction')
+  describe('onSearch async action', () => {
+    it('should dispatch receiveDealsAction and cacheDealsAction when onSearchAsyncAction is dispatched', async () => {
+      const departure = 'some departure city';
+      const arrival = 'some arrival city';
+      const dealType = 'Cheapest';
+
+      const getState = jest.fn(() => ({
+        appReducer: {
+          travelDeals: {
+            ...payload()
+          }
+        },
+        searchReducer: {
+          search: {
+            departure: 'some departure city',
+            arrival: 'some arrival city',
+            dealType: 'Cheapest'
+          }
+        }
+      }));
+
+      const dispatch = jest.fn();
+
+      TravelDealsService.getTravelDealsForCities = jest.fn(() =>
+        Promise.resolve(payload())
+      );
+
+      await onSearchAsyncAction()(dispatch, getState);
+
+      expect(TravelDealsService.getTravelDealsForCities).toBeCalledWith(
+        departure,
+        arrival,
+        dealType,
+        payload()
+      );
+      expect(dispatch.mock.calls[0][0]).toEqual(receiveDealsAction(payload()));
+      expect(dispatch.mock.calls[1][0]).toEqual(
+        cacheDealsAction({ departure, arrival, dealType, data: payload() })
+      );
+    });
+  });
 });
