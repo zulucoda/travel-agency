@@ -10,9 +10,10 @@ import { connect } from 'react-redux';
 import TravelDealsView from './travel-deals.view';
 import { cacheDealsAction, receiveDealsAction } from './travel-deals.reducer';
 
-export function mapStateToProps({ travelDealsReducer }) {
+export function mapStateToProps({ travelDealsReducer, searchReducer }) {
   return {
-    travelDealsReducer
+    travelDealsReducer,
+    searchReducer
   };
 }
 

@@ -6,97 +6,40 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import TravelDealView from './travel-deal/travel-deal.view';
+import uuidv4 from 'uuid/v4';
 
 export default class TravelDealsView extends Component {
   constructor(props) {
     super(props);
+
+    this._renderTravelDeals = this._renderTravelDeals.bind(this);
+  }
+
+  _renderTravelDeals() {
+    return this.props.travelDealsReducer.currentDeals.map(deal => (
+      <TravelDealView
+        key={uuidv4()}
+        deal={deal}
+        arrival={this.props.searchReducer.search.arrival}
+      />
+    ));
   }
 
   componentDidMount() {}
 
   render() {
-    return (
-      <div className="travel-deals">
-        {JSON.stringify(this.props.travelDealsReducer.currentDeals, null, 3)}
-        {/*<div className="travel-deal">*/}
-        {/*<div className="travel-deal-start travel-deal-item">*/}
-        {/*<h1>*/}
-        {/*<i className="fas fa-bus" />*/}
-        {/*</h1>*/}
-        {/*<h3>London</h3>*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-progress travel-deal-item">*/}
-        {/*<hr />*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-phase-complete travel-deal-item">*/}
-        {/*<h1>*/}
-        {/*<i className="fas fa-flag" />*/}
-        {/*</h1>*/}
-        {/*<h3>Amsterdam</h3>*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-cost-duration travel-deal-item">*/}
-        {/*<h4>05h:15m</h4>*/}
-        {/*<h6>REF BLA0515</h6>*/}
-        {/*<h5>*/}
-        {/*160 <i className="fas fa-euro-sign" />*/}
-        {/*</h5>*/}
-        {/*</div>*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal">*/}
-        {/*<div className="travel-deal-start travel-deal-item">*/}
-        {/*<h1>*/}
-        {/*<i className="fas fa-train" />*/}
-        {/*</h1>*/}
-        {/*<h3>Amsterdam</h3>*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-progress travel-deal-item">*/}
-        {/*<hr />*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-phase-complete travel-deal-item">*/}
-        {/*<h1>*/}
-        {/*<i className="fas fa-flag" />*/}
-        {/*</h1>*/}
-        {/*<h3>Warsaw</h3>*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-cost-duration travel-deal-item">*/}
-        {/*<h4>04h:15m</h4>*/}
-        {/*<h6>REF TAW0415</h6>*/}
-        {/*<h5>*/}
-        {/*110 <i className="fas fa-euro-sign" />*/}
-        {/*</h5>*/}
-        {/*</div>*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal">*/}
-        {/*<div className="travel-deal-start travel-deal-item">*/}
-        {/*<h1>*/}
-        {/*<i className="fas fa-car" />*/}
-        {/*</h1>*/}
-        {/*<h3>Warsaw</h3>*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-progress travel-deal-item">*/}
-        {/*<hr />*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-phase-complete travel-deal-item">*/}
-        {/*<h1>*/}
-        {/*<i className="fas fa-flag-checkered" />*/}
-        {/*</h1>*/}
-        {/*<h3>Moscow</h3>*/}
-        {/*</div>*/}
-        {/*<div className="travel-deal-cost-duration travel-deal-item">*/}
-        {/*<h4>03h:15m</h4>*/}
-        {/*<h6>REF CWM0315</h6>*/}
-        {/*<h5>*/}
-        {/*80 <i className="fas fa-euro-sign" />*/}
-        {/*</h5>*/}
-        {/*</div>*/}
-        {/*</div>*/}
-      </div>
-    );
+    if (this.props.travelDealsReducer.currentDeals.length === 0) {
+      return <div />;
+    } else {
+      return <div className="travel-deals">{this._renderTravelDeals()}</div>;
+    }
   }
 }
 
 TravelDealsView.propTypes = {
   travelDealsReducer: PropTypes.object,
+  searchReducer: PropTypes.object,
   cacheDealsAction: PropTypes.func,
   receiveDealsAction: PropTypes.func
 };
