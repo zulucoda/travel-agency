@@ -15,6 +15,12 @@ To run tests
 npm test
 ```
 
+## Run
+To run solution
+```shell
+npm start
+```
+
 ## Solution / Tech Stack
 The project was created using `create-react-app`. This project conforms to the [Air BnB style guide's](https://github.com/airbnb/javascript) naming and coding-style conventions. Furthermore, I use the [Redux ducks modular pattern](https://github.com/erikras/ducks-modular-redux) for reducers, containers, and actions.
 
