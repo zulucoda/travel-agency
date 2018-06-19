@@ -30,7 +30,7 @@ describe('Search Container - Unit test', () => {
     const actual = mapStateToProps(stateBefore());
 
     const expected = {
-      cities: [...stateBefore().appReducer.cities],
+      cities: ['Choose city', ...stateBefore().appReducer.cities],
       searchReducer: { ...stateBefore().searchReducer }
     };
 
