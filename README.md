@@ -3,6 +3,8 @@ Travel Agency
 
 This is my solution to the Property Finder Front-end challenge.
 
+[![travel-agency](muzi-travel-agency.gif)](https://travel-agency.mfbproject.co.za/)
+
 ## Demo
 Live demo [https://travel-agency.mfbproject.co.za/](https://travel-agency.mfbproject.co.za/)
 
